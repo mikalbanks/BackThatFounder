@@ -41,6 +41,8 @@ export default function BackerSignupPage() {
     consent: false,
   });
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState("");
 
   function handleChange(e) {
     const { name, value, type, checked } = e.target;
@@ -60,10 +62,30 @@ export default function BackerSignupPage() {
     }));
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
-    // TODO: Connect to backend / Supabase / email service
-    setSubmitted(true);
+    setSubmitting(true);
+    setError("");
+
+    try {
+      const res = await fetch("/api/backer-signup", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok || !data.success) {
+        throw new Error(data.error || "Something went wrong");
+      }
+
+      setSubmitted(true);
+    } catch (err) {
+      setError(err.message || "Failed to submit. Please try again.");
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   return (
@@ -235,12 +257,19 @@ export default function BackerSignupPage() {
                   </label>
                 </div>
 
+                {error && (
+                  <div className="rounded-2xl border border-red-200 bg-red-50 p-4 text-sm text-red-700">
+                    {error}
+                  </div>
+                )}
+
                 <button
                   type="submit"
-                  className="inline-flex items-center justify-center gap-2 rounded-full bg-ink px-6 py-3 text-sm font-semibold text-cream transition hover:bg-ink-soft"
+                  disabled={submitting}
+                  className="inline-flex items-center justify-center gap-2 rounded-full bg-ink px-6 py-3 text-sm font-semibold text-cream transition hover:bg-ink-soft disabled:opacity-50"
                 >
                   <Heart className="h-4 w-4" />
-                  Sign Up as a Backer
+                  {submitting ? "Submitting..." : "Sign Up as a Backer"}
                 </button>
               </form>
             )}
