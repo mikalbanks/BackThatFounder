@@ -9,19 +9,19 @@ const features = [
     emoji: "🌱",
     color: "bg-mint/20",
     title: "Curated backer network",
-    desc: "Connect with backers who align with your values, industry, and stage — not just any investor.",
+    desc: "Connect with backers who offer the exact skills and resources you need — mentorship, tools, intros, and more.",
   },
   {
     emoji: "✨",
     color: "bg-lavender/20",
-    title: "Founder-friendly terms",
-    desc: "Transparent, fair structures designed to protect founders while empowering growth.",
+    title: "No strings attached",
+    desc: "All support is in-kind. No equity given, no financial returns expected. Just genuine help from people who believe.",
   },
   {
     emoji: "📡",
     color: "bg-sky/20",
     title: "Ongoing community",
-    desc: "Funding is just the start. Access mentorship, resources, and a network that grows with you.",
+    desc: "Support doesn't stop at one introduction. Access a growing network of backers, mentors, and fellow founders.",
   },
 ];
 

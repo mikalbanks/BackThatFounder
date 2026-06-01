@@ -1,12 +1,5 @@
+import { Link } from "react-router-dom";
 import FounderCard from "./FounderCard";
-
-const avatarInitials = ["AJ", "MR", "KL", "DP"];
-const avatarColors = [
-  "bg-rose text-ink",
-  "bg-mint text-ink",
-  "bg-lavender text-ink",
-  "bg-peach text-ink",
-];
 
 export default function HeroSection() {
   return (
@@ -22,7 +15,7 @@ export default function HeroSection() {
           {/* Badge */}
           <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-butter px-4 py-2 text-sm font-medium text-ink-soft">
             <span className="animate-pulse-dot h-2 w-2 rounded-full bg-orange-400" />
-            Now accepting applications &middot; Spring 2025
+            Applications for 2026 now open
           </div>
 
           <h1 className="font-display text-4xl leading-tight text-ink sm:text-5xl lg:text-6xl">
@@ -33,44 +26,32 @@ export default function HeroSection() {
           </h1>
 
           <p className="mt-6 max-w-lg text-lg font-light leading-relaxed text-ink-soft">
-            A community-powered platform connecting visionary founders with
-            backers who believe in people, not just pitches.
+            Connecting visionary founders with people who want to help — through
+            time, advice, and resources, not financial returns.
           </p>
 
           {/* CTAs */}
           <div className="mt-8 flex flex-wrap gap-4">
-            <a
-              href="#cta"
+            <Link
+              to="/apply"
               className="rounded-full bg-ink px-7 py-3.5 text-sm font-semibold text-cream transition hover:bg-ink-soft"
             >
-              Start Your Journey &rarr;
-            </a>
-            <a
-              href="#how-it-works"
+              Apply as a Founder &rarr;
+            </Link>
+            <Link
+              to="/how-it-works"
               className="rounded-full border-2 border-ink/20 px-7 py-3.5 text-sm font-semibold text-ink transition hover:border-ink/40 hover:bg-ink/5"
             >
               See How It Works
-            </a>
+            </Link>
           </div>
 
-          {/* Trust row */}
-          <div className="mt-10 flex items-center gap-4">
-            <div className="flex -space-x-2">
-              {avatarInitials.map((init, i) => (
-                <span
-                  key={init}
-                  className={`flex h-9 w-9 items-center justify-center rounded-full border-2 border-cream text-xs font-bold ${avatarColors[i]}`}
-                >
-                  {init}
-                </span>
-              ))}
-            </div>
-            <p className="text-sm text-ink-muted">
-              <span className="font-semibold text-ink">240+</span> founders
-              backed this year across{" "}
-              <span className="font-semibold text-ink">18</span> industries
-            </p>
-          </div>
+          {/* In-kind notice */}
+          <p className="mt-6 max-w-md text-xs leading-relaxed text-ink-muted">
+            BackThatFounder facilitates in-kind donations only. Backers
+            contribute time, expertise, and resources as gifts — no equity or
+            financial returns are involved.
+          </p>
         </div>
 
         {/* Right: Card stack */}
@@ -86,7 +67,7 @@ export default function HeroSection() {
 
           {/* Floating badges */}
           <div className="animate-badge-float absolute -left-4 top-12 z-20 rounded-2xl bg-white px-4 py-2.5 text-sm font-medium shadow-lg">
-            <span className="mr-1">🎉</span> Just backed! <span className="font-bold text-rose-deep">+$5k</span>
+            <span className="mr-1">🎉</span> Just matched!
           </div>
           <div className="animate-badge-float-2 absolute -right-2 bottom-16 z-20 rounded-2xl bg-white px-4 py-2.5 text-sm font-medium shadow-lg">
             <span className="mr-1">⭐</span> Featured Founder

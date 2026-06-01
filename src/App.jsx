@@ -4,6 +4,10 @@ import LandingPage from "./pages/LandingPage";
 import AboutPage from "./pages/AboutPage";
 import ContactPage from "./pages/ContactPage";
 import FAQPage from "./pages/FAQPage";
+import HowItWorksPage from "./pages/HowItWorksPage";
+import FounderApplyPage from "./pages/FounderApplyPage";
+import BackerSignupPage from "./pages/BackerSignupPage";
+import TermsPage from "./pages/TermsPage";
 
 export default function App() {
   return (
@@ -16,6 +20,10 @@ export default function App() {
         <Route path="about" element={<AboutPage />} />
         <Route path="contact" element={<ContactPage />} />
         <Route path="faq" element={<FAQPage />} />
+        <Route path="how-it-works" element={<HowItWorksPage />} />
+        <Route path="apply" element={<FounderApplyPage />} />
+        <Route path="back" element={<BackerSignupPage />} />
+        <Route path="terms" element={<TermsPage />} />
       </Route>
 
       {/* Catch-all */}

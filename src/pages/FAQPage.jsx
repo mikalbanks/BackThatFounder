@@ -1,39 +1,44 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { ChevronDown } from "lucide-react";
 import ScrollReveal from "../components/ui/ScrollReveal";
 
 const faqs = [
   {
     q: "What is BackThatFounder?",
-    a: "BackThatFounder is an initiative designed to understand and address the practical, often invisible costs that slow founders down — things like housing, travel, visas, software, legal fees, and conference access. We start by listening through our founder survey, then use the data to build partnerships, pilot programs, and community support.",
+    a: "BackThatFounder is a platform that connects startup founders with backers who want to help through in-kind donations — things like mentorship, software credits, legal guidance, workspace, and introductions. We don't facilitate financial investments, equity exchanges, or loans.",
+  },
+  {
+    q: "What does 'in-kind support' mean?",
+    a: "In-kind support means non-monetary contributions — a backer might donate their time for mentorship, provide free access to software tools, offer legal consultations, or share their professional network. No money changes hands between founders and backers on our platform.",
   },
   {
     q: "Who is this for?",
-    a: "Our survey is for startup founders facing real-world expenses and access gaps, community builders who want to help organize and support founders, and B2B partners (companies, accelerators, sponsors) who want to offer perks, services, or credits to founders.",
+    a: "Founders: If you're building a startup and need practical help (mentorship, tools, advice, introductions), you can apply to be listed. Backers: If you have skills, resources, or expertise you'd like to share with early-stage founders, you can sign up to offer support.",
   },
   {
-    q: "How does the survey work?",
-    a: "The survey takes less than 3 minutes. It asks about your current challenges, which expenses put the most pressure on you, and what one obstacle — if removed in the next 30 days — would meaningfully help you keep building. Your responses help us identify patterns across the founder community.",
+    q: "Is BackThatFounder free to use?",
+    a: "Yes. Applying as a founder and signing up as a backer are both free. Our goal is to connect people who can help each other. There is no cost to participate, and we'll never sell your data.",
   },
   {
-    q: "Is BackThatFounder free?",
-    a: "Yes. Taking the survey is completely free. Our goal is to gather data that helps us build the right support infrastructure. There is no cost to participate, and we'll never sell your data.",
+    q: "Do backers get equity or financial returns?",
+    a: "No. All support on BackThatFounder is given as a gift. Backers do not receive equity, ownership stakes, financial returns, or repayment of any kind. This is clearly communicated during sign-up and in our Terms of Service.",
+  },
+  {
+    q: "How does the matching process work?",
+    a: "After you submit your application (as a founder) or sign-up (as a backer), our team reviews your profile and matches you with the best fit based on industry, stage, skills needed, and resources offered. We'll introduce you when we find a strong match.",
   },
   {
     q: "How is my data used?",
-    a: "Your responses are used to identify patterns in founder needs — which obstacles are most common, most urgent, and most impactful to remove. We use this data to design partnerships, pilots, and community programs. We never share individual responses without your permission.",
+    a: "Your information is used to create your profile and match you with founders or backers. We don't sell your data to third parties. We may use anonymized, aggregated data to improve our platform. See our Terms & Privacy page for full details.",
   },
   {
     q: "How can my company partner with BackThatFounder?",
-    a: "If you're a service provider, accelerator, sponsor, or B2B company that wants to support founders, we'd love to hear from you. Visit our Contact page or select 'B2B collaborator' or 'Sponsor or supporter' in the survey to express interest.",
-  },
-  {
-    q: "When will pilot programs launch?",
-    a: "We're currently in the data-gathering phase. Once we've identified the most impactful areas, we'll begin designing and launching pilot programs. Strong-fit survey respondents may be invited to participate early.",
+    a: "If you're a company, accelerator, or service provider that wants to offer tools, credits, or support to founders, we'd love to hear from you. Visit our Contact page to get in touch.",
   },
   {
     q: "Can I help build the community?",
-    a: "Absolutely. We're looking for community builders who want to help recruit founders, organize events, share resources, and amplify the mission. Select 'Community builder' in the survey, and we'll follow up.",
+    a: "Absolutely. We're looking for community builders who want to help recruit founders, organize events, share resources, and amplify the mission. Sign up as a backer and mention community-building in your bio.",
   },
 ];
 
@@ -100,15 +105,15 @@ export default function FAQPage() {
           <ScrollReveal>
             <h2 className="font-display text-3xl text-ink sm:text-4xl">Still have questions?</h2>
             <p className="mx-auto mt-4 max-w-xl text-ink-soft">
-              Take the survey to share your needs, or reach out to us directly.
+              Apply as a founder, sign up as a backer, or reach out to us directly.
             </p>
             <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-              <a href="/" className="rounded-full bg-ink px-7 py-3.5 text-sm font-semibold text-cream transition hover:bg-ink-soft">
-                Get Started &rarr;
-              </a>
-              <a href="/contact" className="rounded-full border-2 border-ink/20 px-7 py-3.5 text-sm font-semibold text-ink transition hover:border-ink/40">
+              <Link to="/apply" className="rounded-full bg-ink px-7 py-3.5 text-sm font-semibold text-cream transition hover:bg-ink-soft">
+                Apply as a Founder &rarr;
+              </Link>
+              <Link to="/contact" className="rounded-full border-2 border-ink/20 px-7 py-3.5 text-sm font-semibold text-ink transition hover:border-ink/40">
                 Contact Us
-              </a>
+              </Link>
             </div>
           </ScrollReveal>
         </div>

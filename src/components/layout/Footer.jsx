@@ -4,6 +4,8 @@ const links = [
   { label: "About", to: "/about" },
   { label: "Contact", to: "/contact" },
   { label: "FAQ", to: "/faq" },
+  { label: "How It Works", to: "/how-it-works" },
+  { label: "Terms & Privacy", to: "/terms" },
 ];
 
 export default function Footer() {

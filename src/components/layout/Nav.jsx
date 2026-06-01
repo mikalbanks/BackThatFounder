@@ -4,6 +4,7 @@ import { Menu, X } from "lucide-react";
 
 const navLinks = [
   { label: "Home", to: "/" },
+  { label: "How It Works", to: "/how-it-works" },
   { label: "About", to: "/about" },
   { label: "FAQ", to: "/faq" },
   { label: "Contact", to: "/contact" },
@@ -61,7 +62,7 @@ export default function Nav() {
         </div>
 
         <Link
-          to="/"
+          to="/apply"
           className="hidden rounded-full bg-ink px-5 py-2.5 text-sm font-semibold text-cream transition hover:bg-ink-soft md:inline-flex"
         >
           Get Started &rarr;
@@ -98,7 +99,7 @@ export default function Nav() {
           ))}
           <div className="pt-3">
             <Link
-              to="/"
+              to="/apply"
               className="block rounded-full bg-ink px-5 py-3 text-center text-sm font-semibold text-cream"
             >
               Get Started &rarr;

@@ -1,10 +1,10 @@
 const items = [
-  "Relationship-first investing",
-  "240+ founders backed",
-  "Community-powered capital",
-  "Not just funding — belief",
-  "18 industries represented",
+  "In-kind support for founders",
+  "Time, tools & expertise",
+  "Community-powered help",
+  "No equity exchanged",
   "Built for the underestimated",
+  "Belief in action",
 ];
 
 function MarqueeTrack() {

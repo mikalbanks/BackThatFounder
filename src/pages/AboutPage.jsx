@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Heart, Lightbulb, Shield, Users } from "lucide-react";
 import ScrollReveal from "../components/ui/ScrollReveal";
 
@@ -135,10 +136,13 @@ export default function AboutPage() {
               Whether you&rsquo;re a founder, a community builder, or a company that
               wants to support startups — your input shapes what we build next.
             </p>
-            <div className="mt-8">
-              <a href="/" className="inline-flex rounded-full bg-ink px-7 py-3.5 text-sm font-semibold text-cream transition hover:bg-ink-soft">
-                Get Started &rarr;
-              </a>
+            <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+              <Link to="/apply" className="rounded-full bg-ink px-7 py-3.5 text-sm font-semibold text-cream transition hover:bg-ink-soft">
+                Apply as a Founder &rarr;
+              </Link>
+              <Link to="/back" className="rounded-full border-2 border-ink/20 px-7 py-3.5 text-sm font-semibold text-ink transition hover:border-ink/40">
+                Become a Backer
+              </Link>
             </div>
           </ScrollReveal>
         </div>

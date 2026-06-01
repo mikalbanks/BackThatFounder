@@ -1,23 +1,25 @@
+import { Link } from "react-router-dom";
+
 const steps = [
   {
     num: "01",
     emoji: "✍️",
-    title: "Tell your story",
-    desc: "Share your vision, your journey, and what makes your startup worth believing in.",
+    title: "Submit your idea",
+    desc: "Share your vision, your journey, and the kind of support that would help you move forward.",
     bg: "bg-peach",
   },
   {
     num: "02",
     emoji: "🤝",
     title: "Get matched",
-    desc: "Our community surfaces your profile to backers aligned with your mission and industry.",
+    desc: "We connect you with backers whose skills and resources align with your specific needs.",
     bg: "bg-mint",
   },
   {
     num: "03",
     emoji: "🚀",
-    title: "Build together",
-    desc: "Receive funding, mentorship, and ongoing community support as you scale.",
+    title: "Receive support",
+    desc: "Get in-kind help — mentorship, tools, introductions, and more — so you can focus on building.",
     bg: "bg-lavender",
   },
 ];
@@ -31,7 +33,7 @@ export default function HowItWorks() {
             The Process
           </p>
           <h2 className="font-display text-3xl text-ink sm:text-4xl lg:text-5xl">
-            Three steps to getting backed
+            Three steps to getting supported
           </h2>
         </div>
 
@@ -59,6 +61,15 @@ export default function HowItWorks() {
               </p>
             </div>
           ))}
+        </div>
+
+        <div className="mt-10 text-center">
+          <Link
+            to="/how-it-works"
+            className="text-sm font-semibold text-rose-deep underline underline-offset-4 transition hover:text-ink"
+          >
+            Learn more about the full process &rarr;
+          </Link>
         </div>
       </div>
     </section>

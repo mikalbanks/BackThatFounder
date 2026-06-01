@@ -3,9 +3,8 @@ import Navbar from "../components/Navbar";
 import HeroSection from "../components/HeroSection";
 import MarqueeBar from "../components/MarqueeBar";
 import HowItWorks from "../components/HowItWorks";
-import StatsBar from "../components/StatsBar";
 import FeaturesSection from "../components/FeaturesSection";
-import Testimonials from "../components/Testimonials";
+import InKindBanner from "../components/InKindBanner";
 import CtaSection from "../components/CtaSection";
 import FooterNew from "../components/FooterNew";
 
@@ -28,9 +27,8 @@ export default function LandingPage() {
       <HeroSection />
       <MarqueeBar />
       <HowItWorks />
-      <StatsBar />
       <FeaturesSection />
-      <Testimonials />
+      <InKindBanner />
       <CtaSection />
       <FooterNew />
     </>

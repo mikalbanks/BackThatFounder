@@ -4,13 +4,17 @@ const tagColors = [
   "bg-lavender/40 text-ink",
 ];
 
+/**
+ * FounderCard — Sample founder profile card used in the hero section.
+ * Updated to reflect in-kind support model (no financial metrics).
+ */
 export default function FounderCard({
   name = "Amara Johnson",
   role = "CEO, Solara Health",
   tags = ["HealthTech", "Seed Stage", "Impact"],
-  progress = 72,
-  runway = "8 months",
-  backerCount = 34,
+  supportProgress = 72,
+  supportCount = 5,
+  needs = "Mentorship, legal help",
   emoji = "👩🏾‍💻",
 }) {
   return (
@@ -38,26 +42,26 @@ export default function FounderCard({
         ))}
       </div>
 
-      {/* Progress */}
+      {/* Support progress */}
       <div className="mb-1 flex items-center justify-between text-sm">
-        <span className="text-ink-soft">Funding progress</span>
-        <span className="font-semibold text-ink">{progress}%</span>
+        <span className="text-ink-soft">Support received</span>
+        <span className="font-semibold text-ink">{supportProgress}%</span>
       </div>
       <div className="mb-4 h-2 overflow-hidden rounded-full bg-cream">
         <div
           className="h-full rounded-full bg-gradient-to-r from-rose to-lavender"
-          style={{ width: `${progress}%` }}
+          style={{ width: `${supportProgress}%` }}
         />
       </div>
 
       {/* Footer */}
       <div className="flex items-center justify-between">
         <div className="text-sm text-ink-muted">
-          <span className="font-semibold text-ink">{backerCount}</span> backers
-          &middot; {runway} runway
+          <span className="font-semibold text-ink">{supportCount}</span> backers
+          &middot; Needs: {needs}
         </div>
         <button className="rounded-full bg-ink px-4 py-2 text-xs font-semibold text-cream transition hover:bg-ink-soft">
-          Back Her &rarr;
+          Support &rarr;
         </button>
       </div>
     </div>

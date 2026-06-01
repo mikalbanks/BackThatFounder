@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function CtaSection() {
   return (
     <section
@@ -23,23 +25,32 @@ export default function CtaSection() {
           Your idea deserves a believer
         </h2>
         <p className="mx-auto mt-6 max-w-xl text-lg font-light leading-relaxed text-ink-soft">
-          Whether you&rsquo;re a founder looking for backing or a backer looking
-          for the next great idea — this is where it starts.
+          Whether you&rsquo;re a founder looking for in-kind support or someone
+          who wants to help a startup with your time and expertise — this is
+          where it starts.
         </p>
+
         <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-          <a
-            href="#"
+          <Link
+            to="/apply"
             className="rounded-full bg-ink px-8 py-4 text-sm font-semibold text-cream transition hover:bg-ink-soft"
           >
             Apply as a Founder &rarr;
-          </a>
-          <a
-            href="#"
+          </Link>
+          <Link
+            to="/back"
             className="rounded-full border-2 border-ink/20 bg-white/50 px-8 py-4 text-sm font-semibold text-ink transition hover:border-ink/40"
           >
             Become a Backer
-          </a>
+          </Link>
         </div>
+
+        {/* In-kind notice */}
+        <p className="mx-auto mt-6 max-w-lg text-xs leading-relaxed text-ink-muted">
+          All support on BackThatFounder is in-kind (time, expertise,
+          resources). Contributions are gifts and do not entitle backers to
+          equity, ownership, or financial returns.
+        </p>
       </div>
     </section>
   );
