@@ -1,8 +1,6 @@
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import ScrollReveal from "../components/ui/ScrollReveal";
-import CTAButton from "../components/ui/CTAButton";
-import SectionHeader from "../components/ui/SectionHeader";
 
 const faqs = [
   {
@@ -41,22 +39,20 @@ const faqs = [
 
 function FAQItem({ faq, isOpen, onToggle }) {
   return (
-    <div className="rounded-lg border border-ink/10 bg-white shadow-[0_4px_16px_rgba(0,0,0,0.04)]">
+    <div className="rounded-2xl border border-rose/30 bg-white shadow-sm">
       <button
         onClick={onToggle}
         aria-expanded={isOpen}
-        className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left transition hover:bg-cloud/50"
+        className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left transition hover:bg-peach/20"
       >
-        <span className="text-base font-bold text-ink sm:text-lg">{faq.q}</span>
-        <span
-          className={`shrink-0 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
-        >
-          <ChevronDown className="h-5 w-5 text-slate-500" />
+        <span className="text-base font-semibold text-ink sm:text-lg">{faq.q}</span>
+        <span className={`shrink-0 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}>
+          <ChevronDown className="h-5 w-5 text-ink-muted" />
         </span>
       </button>
       {isOpen && (
-        <div className="border-t border-ink/10 px-6 py-5">
-          <p className="text-base leading-7 text-slate-700">{faq.a}</p>
+        <div className="border-t border-rose/20 px-6 py-5">
+          <p className="text-base leading-7 text-ink-soft">{faq.a}</p>
         </div>
       )}
     </div>
@@ -68,25 +64,22 @@ export default function FAQPage() {
 
   return (
     <>
-      <section className="relative overflow-hidden bg-ink py-20 text-white sm:py-28">
-        <div className="animated-gradient absolute inset-0 opacity-80" />
+      <section className="relative overflow-hidden bg-ink py-20 sm:py-28">
+        <div className="absolute inset-0 opacity-30" style={{ background: "radial-gradient(circle at 30% 40%, #F7C5C0, transparent 50%), radial-gradient(circle at 70% 60%, #DDD6F3, transparent 50%)" }} />
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
-            <p className="mb-3 text-sm font-bold uppercase tracking-[0.22em] text-electric">
-              FAQ
-            </p>
-            <h1 className="max-w-4xl text-4xl font-black leading-tight sm:text-5xl lg:text-6xl">
+            <p className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-rose">FAQ</p>
+            <h1 className="max-w-4xl font-display text-4xl leading-tight text-cream sm:text-5xl lg:text-6xl">
               Frequently asked questions
             </h1>
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-white/80">
-              Everything you need to know about BackThatFounder, our survey, and how
-              you can get involved.
+            <p className="mt-6 max-w-2xl text-lg leading-8 text-cream/70">
+              Everything you need to know about BackThatFounder, our survey, and how you can get involved.
             </p>
           </ScrollReveal>
         </div>
       </section>
 
-      <section className="bg-paper py-20 sm:py-24">
+      <section className="bg-cream py-20 sm:py-24">
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
           <div className="space-y-3">
             {faqs.map((faq, index) => (
@@ -102,19 +95,20 @@ export default function FAQPage() {
         </div>
       </section>
 
-      <section className="bg-cloud py-20 sm:py-24">
+      <section className="bg-peach/30 py-20 sm:py-24">
         <div className="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
           <ScrollReveal>
-            <SectionHeader title="Still have questions?" align="center">
-              <p>
-                Take the survey to share your needs, or reach out to us directly.
-              </p>
-            </SectionHeader>
+            <h2 className="font-display text-3xl text-ink sm:text-4xl">Still have questions?</h2>
+            <p className="mx-auto mt-4 max-w-xl text-ink-soft">
+              Take the survey to share your needs, or reach out to us directly.
+            </p>
             <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-              <CTAButton />
-              <CTAButton href="/contact" variant="light">
+              <a href="/" className="rounded-full bg-ink px-7 py-3.5 text-sm font-semibold text-cream transition hover:bg-ink-soft">
+                Get Started &rarr;
+              </a>
+              <a href="/contact" className="rounded-full border-2 border-ink/20 px-7 py-3.5 text-sm font-semibold text-ink transition hover:border-ink/40">
                 Contact Us
-              </CTAButton>
+              </a>
             </div>
           </ScrollReveal>
         </div>

@@ -3,38 +3,124 @@
 @tailwind utilities;
 
 :root {
-  color: #07111f;
-  background: #fffaf0;
+  --rose: #F7C5C0;
+  --rose-deep: #F0A39B;
+  --peach: #FDE5D4;
+  --peach-deep: #F9C9A8;
+  --mint: #C7EAD9;
+  --mint-deep: #A3D9BF;
+  --lavender: #DDD6F3;
+  --sky: #C9E8F5;
+  --butter: #FEF3C7;
+  --ink: #2B2235;
+  --ink-soft: #5A4E68;
+  --ink-muted: #9B8FAD;
+  --cream: #FDFAF8;
+}
+
+body {
+  background: var(--cream);
+  color: var(--ink);
+  min-width: 320px;
+  margin: 0;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-html {
-  scroll-behavior: auto;
-}
-
-body {
-  min-width: 320px;
-  margin: 0;
-  background:
-    radial-gradient(circle at 18% 0%, rgba(31, 123, 255, 0.12), transparent 30rem),
-    linear-gradient(180deg, #fffaf0 0%, #f6f1e8 100%);
-}
-
 ::selection {
   color: #ffffff;
-  background: #1f7bff;
+  background: var(--rose-deep);
 }
 
-.animated-gradient {
-  background:
-    radial-gradient(circle at 15% 25%, rgba(31, 123, 255, 0.42), transparent 32%),
-    radial-gradient(circle at 82% 20%, rgba(124, 58, 237, 0.28), transparent 30%),
-    radial-gradient(circle at 60% 84%, rgba(21, 197, 139, 0.2), transparent 28%);
+/* ── Keyframe Animations ── */
+
+@keyframes float {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%      { transform: translate(20px, -20px) scale(1.03); }
+  66%      { transform: translate(-15px, 15px) scale(0.97); }
 }
 
+@keyframes cardFloat {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-8px); }
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.4; }
+}
+
+@keyframes badgeFloat {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-6px); }
+}
+
+/* ── Blob Backgrounds ── */
+
+.blob {
+  border-radius: 9999px;
+  filter: blur(80px);
+  opacity: 0.55;
+  position: absolute;
+  pointer-events: none;
+}
+
+.blob-1 {
+  width: 520px;
+  height: 520px;
+  background: var(--rose);
+  top: -100px;
+  right: -80px;
+  animation: float 8s ease-in-out infinite;
+}
+
+.blob-2 {
+  width: 380px;
+  height: 380px;
+  background: var(--mint);
+  bottom: 60px;
+  left: -100px;
+  animation: float 10s ease-in-out infinite reverse;
+}
+
+.blob-3 {
+  width: 260px;
+  height: 260px;
+  background: var(--lavender);
+  top: 200px;
+  right: 300px;
+  animation: float 12s ease-in-out infinite 2s;
+}
+
+/* ── Animation Utilities ── */
+
+.animate-card-float    { animation: cardFloat  6s ease-in-out infinite; }
+.animate-badge-float   { animation: badgeFloat 5s ease-in-out infinite 1s; }
+.animate-badge-float-2 { animation: badgeFloat 7s ease-in-out infinite; }
+.animate-marquee       { animation: marquee 22s linear infinite; }
+.animate-pulse-dot     { animation: pulse-dot 2s infinite; }
+
+/* ── Scroll Reveal ── */
+
+.fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-up.visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Legacy scroll-reveal (used by About/FAQ/Contact pages) */
 .scroll-reveal {
   opacity: 0;
   transform: translateY(24px);
@@ -46,18 +132,7 @@ body {
   transform: translateY(0);
 }
 
-.hero-fade-in {
-  opacity: 0;
-  transform: translateY(20px);
-  animation: heroFadeIn 0.6s ease-out forwards;
-}
-
-@keyframes heroFadeIn {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+/* ── Mobile Menu ── */
 
 .mobile-menu {
   max-height: 0;
@@ -69,6 +144,8 @@ body {
   max-height: 400px;
   opacity: 1;
 }
+
+/* ── Reduced Motion ── */
 
 @media (prefers-reduced-motion: reduce) {
   *,

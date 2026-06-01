@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { KeyRound, Menu, X } from "lucide-react";
-import CTAButton from "../ui/CTAButton";
+import { Menu, X } from "lucide-react";
 
 const navLinks = [
   { label: "Home", to: "/" },
@@ -38,16 +37,13 @@ export default function Nav() {
   }, []);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-ink/10 bg-paper">
+    <header className="sticky top-0 z-50 border-b border-rose/40 bg-cream/90 backdrop-blur-md">
       <nav
         aria-label="Primary navigation"
         className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:h-20 sm:px-6 lg:px-8"
       >
-        <Link to="/" className="flex items-center gap-3 text-ink">
-          <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-ink text-white shadow-soft">
-            <KeyRound aria-hidden="true" className="h-5 w-5" />
-          </span>
-          <span className="text-base font-black sm:text-lg">BackThatFounder</span>
+        <Link to="/" className="font-display text-xl text-ink sm:text-2xl">
+          Back That <em className="text-rose-deep">Founder</em>
         </Link>
 
         <div className="hidden items-center gap-8 md:flex">
@@ -55,8 +51,8 @@ export default function Nav() {
             <Link
               key={label}
               to={to}
-              className={`text-sm font-semibold transition hover:text-ink ${
-                location.pathname === to ? "text-electric" : "text-slate-700"
+              className={`text-sm font-medium transition hover:text-ink ${
+                location.pathname === to ? "text-rose-deep" : "text-ink-soft"
               }`}
             >
               {label}
@@ -64,14 +60,19 @@ export default function Nav() {
           ))}
         </div>
 
-        <CTAButton className="hidden px-4 py-2.5 text-xs sm:text-sm md:inline-flex" />
+        <Link
+          to="/"
+          className="hidden rounded-full bg-ink px-5 py-2.5 text-sm font-semibold text-cream transition hover:bg-ink-soft md:inline-flex"
+        >
+          Get Started &rarr;
+        </Link>
 
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-expanded={mobileOpen}
           aria-controls="mobile-menu"
           aria-label={mobileOpen ? "Close menu" : "Open menu"}
-          className="flex h-10 w-10 items-center justify-center rounded-lg text-ink transition hover:bg-cloud md:hidden"
+          className="flex h-10 w-10 items-center justify-center rounded-lg text-ink transition hover:bg-rose/30 md:hidden"
         >
           {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
@@ -79,7 +80,7 @@ export default function Nav() {
 
       <div
         id="mobile-menu"
-        className={`mobile-menu overflow-hidden border-t border-ink/10 bg-paper md:hidden ${
+        className={`mobile-menu overflow-hidden border-t border-rose/30 bg-cream md:hidden ${
           mobileOpen ? "mobile-menu-open" : ""
         }`}
       >
@@ -88,15 +89,20 @@ export default function Nav() {
             <Link
               key={label}
               to={to}
-              className={`block rounded-lg px-4 py-3 text-base font-semibold transition hover:bg-cloud ${
-                location.pathname === to ? "text-electric" : "text-ink"
+              className={`block rounded-lg px-4 py-3 text-base font-medium transition hover:bg-rose/20 ${
+                location.pathname === to ? "text-rose-deep" : "text-ink"
               }`}
             >
               {label}
             </Link>
           ))}
           <div className="pt-3">
-            <CTAButton className="w-full" />
+            <Link
+              to="/"
+              className="block rounded-full bg-ink px-5 py-3 text-center text-sm font-semibold text-cream"
+            >
+              Get Started &rarr;
+            </Link>
           </div>
         </div>
       </div>
