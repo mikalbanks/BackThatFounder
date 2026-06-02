@@ -24,7 +24,11 @@ export async function onRequestPost(context) {
       return errorResponse("Email service not configured", 500);
     }
 
-    const fromEmail = FROM_EMAIL || "BackThatFounder <onboarding@resend.dev>";
+    // Sanitize FROM_EMAIL — must be valid email or "Name <email>" format
+    let fromEmail = "onboarding@resend.dev";
+    if (FROM_EMAIL && FROM_EMAIL.includes("@")) {
+      fromEmail = FROM_EMAIL.trim();
+    }
     const body = await context.request.json();
 
     // Validate required fields
@@ -62,8 +66,8 @@ export async function onRequestPost(context) {
       `,
     });
 
-    // 2. Send auto-reply to sender
-    await sendEmail(RESEND_API_KEY, {
+    // 2. Send auto-reply to sender (non-blocking — may fail without verified domain)
+    try { await sendEmail(RESEND_API_KEY, {
       from: fromEmail,
       to: email,
       subject: "We got your message — BackThatFounder",
@@ -82,12 +86,12 @@ export async function onRequestPost(context) {
           </div>
         </div>
       `,
-    });
+    }); } catch (replyErr) { console.warn("Auto-reply failed (domain not verified?):", replyErr.message); }
 
     return successResponse({ message: "Message sent successfully" });
   } catch (err) {
     console.error("Contact error:", err);
-    return errorResponse("Failed to send message. Please try again.", 500);
+    return errorResponse(`Failed to send message: ${err.message}`, 500);
   }
 }
 

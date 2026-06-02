@@ -24,7 +24,10 @@ export async function onRequestPost(context) {
       return errorResponse("Email service not configured", 500);
     }
 
-    const fromEmail = FROM_EMAIL || "BackThatFounder <onboarding@resend.dev>";
+    let fromEmail = "onboarding@resend.dev";
+    if (FROM_EMAIL && FROM_EMAIL.includes("@")) {
+      fromEmail = FROM_EMAIL.trim();
+    }
     const body = await context.request.json();
 
     // Validate required fields
@@ -75,8 +78,8 @@ export async function onRequestPost(context) {
       `,
     });
 
-    // 2. Send auto-reply confirmation to backer
-    await sendEmail(RESEND_API_KEY, {
+    // 2. Send auto-reply confirmation to backer (non-blocking)
+    try { await sendEmail(RESEND_API_KEY, {
       from: fromEmail,
       to: email,
       subject: "Welcome to BackThatFounder — you're in!",
@@ -103,7 +106,7 @@ export async function onRequestPost(context) {
           </div>
         </div>
       `,
-    });
+    }); } catch (replyErr) { console.warn("Auto-reply failed:", replyErr.message); }
 
     return successResponse({ message: "Sign-up submitted successfully" });
   } catch (err) {
